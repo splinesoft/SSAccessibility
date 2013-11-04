@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E5ABC311827464B00791CF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5ABC301827464B00791CF3 /* Foundation.framework */; };
+		5E5ABC3F1827464B00791CF3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5ABC3E1827464B00791CF3 /* XCTest.framework */; };
+		5E5ABC401827464B00791CF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5ABC301827464B00791CF3 /* Foundation.framework */; };
+		5E5ABC421827464B00791CF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5ABC411827464B00791CF3 /* UIKit.framework */; };
+		5E5ABC451827464B00791CF3 /* libSSAccessibility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5ABC2D1827464B00791CF3 /* libSSAccessibility.a */; };
+		5E5ABC4B1827464B00791CF3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E5ABC491827464B00791CF3 /* InfoPlist.strings */; };
+		5E5ABC4D1827464B00791CF3 /* SSAccessibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5ABC4C1827464B00791CF3 /* SSAccessibilityTests.m */; };
+		A46B805D536C43B394E3D0B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E3D8B18323402DAA5AF26E /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5E5ABC431827464B00791CF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E5ABC251827464B00791CF3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E5ABC2C1827464B00791CF3;
+			remoteInfo = SSAccessibility;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5E5ABC2B1827464B00791CF3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		05E3D8B18323402DAA5AF26E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		41336371E3C94B59AE5A0B55 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		5E5ABC2D1827464B00791CF3 /* libSSAccessibility.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSSAccessibility.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5ABC301827464B00791CF3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5E5ABC341827464B00791CF3 /* SSAccessibility-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSAccessibility-Prefix.pch"; sourceTree = "<group>"; };
+		5E5ABC3D1827464B00791CF3 /* SSAccessibilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSAccessibilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5ABC3E1827464B00791CF3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5E5ABC411827464B00791CF3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5E5ABC481827464B00791CF3 /* SSAccessibilityTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SSAccessibilityTests-Info.plist"; sourceTree = "<group>"; };
+		5E5ABC4A1827464B00791CF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5E5ABC4C1827464B00791CF3 /* SSAccessibilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSAccessibilityTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E5ABC2A1827464B00791CF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5ABC311827464B00791CF3 /* Foundation.framework in Frameworks */,
+				A46B805D536C43B394E3D0B4 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5ABC3A1827464B00791CF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5ABC451827464B00791CF3 /* libSSAccessibility.a in Frameworks */,
+				5E5ABC3F1827464B00791CF3 /* XCTest.framework in Frameworks */,
+				5E5ABC421827464B00791CF3 /* UIKit.framework in Frameworks */,
+				5E5ABC401827464B00791CF3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E5ABC241827464B00791CF3 = {
+			isa = PBXGroup;
+			children = (
+				5E5ABC321827464B00791CF3 /* SSAccessibility */,
+				5E5ABC461827464B00791CF3 /* SSAccessibilityTests */,
+				5E5ABC2F1827464B00791CF3 /* Frameworks */,
+				5E5ABC2E1827464B00791CF3 /* Products */,
+				41336371E3C94B59AE5A0B55 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		5E5ABC2E1827464B00791CF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ABC2D1827464B00791CF3 /* libSSAccessibility.a */,
+				5E5ABC3D1827464B00791CF3 /* SSAccessibilityTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E5ABC2F1827464B00791CF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ABC301827464B00791CF3 /* Foundation.framework */,
+				5E5ABC3E1827464B00791CF3 /* XCTest.framework */,
+				5E5ABC411827464B00791CF3 /* UIKit.framework */,
+				05E3D8B18323402DAA5AF26E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E5ABC321827464B00791CF3 /* SSAccessibility */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ABC331827464B00791CF3 /* Supporting Files */,
+			);
+			path = SSAccessibility;
+			sourceTree = "<group>";
+		};
+		5E5ABC331827464B00791CF3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ABC341827464B00791CF3 /* SSAccessibility-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E5ABC461827464B00791CF3 /* SSAccessibilityTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ABC4C1827464B00791CF3 /* SSAccessibilityTests.m */,
+				5E5ABC471827464B00791CF3 /* Supporting Files */,
+			);
+			path = SSAccessibilityTests;
+			sourceTree = "<group>";
+		};
+		5E5ABC471827464B00791CF3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ABC481827464B00791CF3 /* SSAccessibilityTests-Info.plist */,
+				5E5ABC491827464B00791CF3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E5ABC2C1827464B00791CF3 /* SSAccessibility */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E5ABC501827464B00791CF3 /* Build configuration list for PBXNativeTarget "SSAccessibility" */;
+			buildPhases = (
+				FF1A2548F5454D88BFD93376 /* Check Pods Manifest.lock */,
+				5E5ABC291827464B00791CF3 /* Sources */,
+				5E5ABC2A1827464B00791CF3 /* Frameworks */,
+				5E5ABC2B1827464B00791CF3 /* CopyFiles */,
+				53A839C7C4DC460BB8E86EDE /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SSAccessibility;
+			productName = SSAccessibility;
+			productReference = 5E5ABC2D1827464B00791CF3 /* libSSAccessibility.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5E5ABC3C1827464B00791CF3 /* SSAccessibilityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E5ABC531827464B00791CF3 /* Build configuration list for PBXNativeTarget "SSAccessibilityTests" */;
+			buildPhases = (
+				5E5ABC391827464B00791CF3 /* Sources */,
+				5E5ABC3A1827464B00791CF3 /* Frameworks */,
+				5E5ABC3B1827464B00791CF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E5ABC441827464B00791CF3 /* PBXTargetDependency */,
+			);
+			name = SSAccessibilityTests;
+			productName = SSAccessibilityTests;
+			productReference = 5E5ABC3D1827464B00791CF3 /* SSAccessibilityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E5ABC251827464B00791CF3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Splinesoft;
+			};
+			buildConfigurationList = 5E5ABC281827464B00791CF3 /* Build configuration list for PBXProject "SSAccessibility" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5E5ABC241827464B00791CF3;
+			productRefGroup = 5E5ABC2E1827464B00791CF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E5ABC2C1827464B00791CF3 /* SSAccessibility */,
+				5E5ABC3C1827464B00791CF3 /* SSAccessibilityTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E5ABC3B1827464B00791CF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5ABC4B1827464B00791CF3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53A839C7C4DC460BB8E86EDE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF1A2548F5454D88BFD93376 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E5ABC291827464B00791CF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5ABC391827464B00791CF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5ABC4D1827464B00791CF3 /* SSAccessibilityTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E5ABC441827464B00791CF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E5ABC2C1827464B00791CF3 /* SSAccessibility */;
+			targetProxy = 5E5ABC431827464B00791CF3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5E5ABC491827464B00791CF3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E5ABC4A1827464B00791CF3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5E5ABC4E1827464B00791CF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5E5ABC4F1827464B00791CF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E5ABC511827464B00791CF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41336371E3C94B59AE5A0B55 /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				DSTROOT = /tmp/SSAccessibility.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SSAccessibility/SSAccessibility-Prefix.pch";
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5E5ABC521827464B00791CF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41336371E3C94B59AE5A0B55 /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				DSTROOT = /tmp/SSAccessibility.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SSAccessibility/SSAccessibility-Prefix.pch";
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5E5ABC541827464B00791CF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SSAccessibility/SSAccessibility-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SSAccessibilityTests/SSAccessibilityTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		5E5ABC551827464B00791CF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SSAccessibility/SSAccessibility-Prefix.pch";
+				INFOPLIST_FILE = "SSAccessibilityTests/SSAccessibilityTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E5ABC281827464B00791CF3 /* Build configuration list for PBXProject "SSAccessibility" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5ABC4E1827464B00791CF3 /* Debug */,
+				5E5ABC4F1827464B00791CF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E5ABC501827464B00791CF3 /* Build configuration list for PBXNativeTarget "SSAccessibility" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5ABC511827464B00791CF3 /* Debug */,
+				5E5ABC521827464B00791CF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E5ABC531827464B00791CF3 /* Build configuration list for PBXNativeTarget "SSAccessibilityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5ABC541827464B00791CF3 /* Debug */,
+				5E5ABC551827464B00791CF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E5ABC251827464B00791CF3 /* Project object */;
+}
