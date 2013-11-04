@@ -28,8 +28,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SSSpeechSynthesizerDelegate;
-
 @interface SSSpeechSynthesizer : NSObject
 
 /*
@@ -38,6 +36,16 @@
  * THIS MAY BE INACCURATE.
  */
 @property (nonatomic, assign, readonly) BOOL mayBeSpeaking;
+
+/**
+ * Optional - the synthesizer will time out this number of seconds after it starts speaking
+ * a line of text with voiceover. The timer is reset after each successfully-spoken line
+ * and when the synthesizer stops speaking.
+ * A timeout will cause the synthesizer to wipe its text queue, then start
+ * speaking again once a new line is enqueued.
+ * Ignore this property, or set it to 0, to disable this behavior.
+ */
+@property (nonatomic, assign) NSTimeInterval timeoutDelay;
 
 /**
  * Stops speaking at the end of the current announcement and clears the text queue.
