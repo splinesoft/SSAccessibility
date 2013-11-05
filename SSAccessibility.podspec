@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "SSAccessibility"
   s.version      = "0.0.3"
-  s.summary      = "iOS Accessibility helpers."
+  s.summary      = "A VoiceOver speech synthesizer and other iOS accessibility helpers."
   s.homepage     = "https://github.com/splinesoft/SSAccessibility"
   s.license      = { :type => 'MIT', :file => 'LICENSE'  }
   s.author       = { "Jonathan Hersh" => "jon@her.sh" }
@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '6.0'
   s.requires_arc = true
   s.source_files = 'SSAccessibility/*.{h,m}'
-  s.frameworks   = ['Foundation', 'AudioToolbox'] 
+  s.frameworks   = ['Foundation', 'UIKit', 'AudioToolbox'] 
   s.dependency 'MSWeakTimer'
 end

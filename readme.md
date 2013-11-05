@@ -11,7 +11,7 @@ iOS Accessibility helpers.
 Install with [CocoaPods](http://cocoapods.org).
 
 ```
-pod 'SSAccessibility', :git => 'https://github.com/splinesoft/SSAccessibility.git'
+pod 'SSAccessibility', :head # YOLO
 ```
 
 ## SSSpeechSynthesizer
@@ -28,7 +28,7 @@ You should if you can. `AVSpeechSynthesizer` is good for speaking long blobs of 
 * `AVSpeechSynthesizer` requires iOS 7
 * `AVSpeechSynthesizer` doesn't always pause or stop speaking when asked
 * The user can set her preferred VoiceOver speaking rate in Settings.app, but there is no programmatic API access to that default speech rate -- say, for use in your `AVSpeechSynthesizer`
-* `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when a user with VoiceOver taps an element
+* `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when VoiceOver starts, so two voices will be speaking at once
 * The user can immediately (and intentionally or unintentionally) interrupt VoiceOver by tapping any element on screen
 
 ## SSAccessibility

@@ -18,7 +18,7 @@
  * `AVSpeechSynthesizer` requires iOS 7
  * `AVSpeechSynthesizer` doesn't always pause or stop speaking when asked
  * The user can set her preferred VoiceOver speaking rate in Settings.app, but there is no programmatic API access to that default speech rate -- say, for use in your `AVSpeechSynthesizer`
- * `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when a user with VoiceOver taps an element
+ * `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when VoiceOver starts, so two voices will be speaking at once
  * The user can immediately (and intentionally or unintentionally) interrupt VoiceOver by tapping any element on screen
  */
 
@@ -41,7 +41,7 @@
  * and when the synthesizer stops speaking.
  * A timeout will cause the synthesizer to wipe its text queue, then start
  * speaking again once a new line is enqueued.
- * Ignore this property, or set it to 0, to disable this behavior.
+ * To disable this behavior, ignore this property or set it to 0.
  */
 @property (nonatomic, assign) NSTimeInterval timeoutDelay;
 
@@ -64,6 +64,7 @@
 /**
  * Add a new line to the end of the speaking queue.
  * Will not interrupt speaking.
+ * Starts speaking if the synthesizer believes itself to not currently be speaking.
  */
 - (void) enqueueLineForSpeaking:(NSString *)line;
 
