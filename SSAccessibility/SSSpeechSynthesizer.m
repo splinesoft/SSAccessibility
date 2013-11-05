@@ -26,7 +26,7 @@
 @implementation SSSpeechSynthesizer
 
 - (id)init {
-    if( ( self = [super init] ) ) {
+    if (( self = [super init] )) {
         _speechQueue = [NSMutableArray new];
         _mayBeSpeaking = NO;
         
@@ -54,7 +54,7 @@
 #pragma mark - speech control
 
 - (void)voiceOverStatusChanged {
-    if( UIAccessibilityIsVoiceOverRunning() ) {
+    if (UIAccessibilityIsVoiceOverRunning()) {
         [self continueSpeaking];
     } else {
         [self stopSpeaking];
@@ -74,7 +74,7 @@
 #pragma mark - Speaking
 
 - (void)enqueueLineForSpeaking:(NSString *)line {
-    if( [line length] == 0 ) {
+    if ([line length] == 0) {
         return;
     }
     
@@ -84,7 +84,12 @@
 }
 
 - (void)maybeDequeueLine {
-    if( [_speechQueue count] == 0 ) {
+    if ([_speechQueue count] == 0) {
+        
+        if ([_delegate respondsToSelector:@selector(synthesizerDidFinishQueue:)]) {
+            [_delegate synthesizerDidFinishQueue:self];
+        }
+        
         return;
     }
     
@@ -92,7 +97,7 @@
         return;
     }
     
-    if ( !_mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying] ) {
+    if (!_mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying]) {
         _mayBeSpeaking = YES;
         
         if (_speakResetTimer) {
@@ -110,7 +115,7 @@
                                                              dispatchQueue:dispatch_get_main_queue()];
         }
         
-        if ( [_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)] ) {
+        if ([_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
             [_delegate synthesizer:self
              willBeginSpeakingLine:_lastSpokenText];
         }
@@ -133,11 +138,17 @@
     NSDictionary *userInfo = [note userInfo];
     
     // We speak the next line only if VoiceOver successfully spoke our last line.
-    if ( userInfo
-         && _lastSpokenText
-         && [userInfo[UIAccessibilityAnnouncementKeyStringValue] isEqualToString:_lastSpokenText] ) {
+    if (userInfo
+        && _lastSpokenText
+        && [userInfo[UIAccessibilityAnnouncementKeyStringValue] isEqualToString:_lastSpokenText]) {
         
-        if ( [userInfo[UIAccessibilityAnnouncementKeyWasSuccessful] boolValue] ) {
+        if ([userInfo[UIAccessibilityAnnouncementKeyWasSuccessful] boolValue]) {
+            
+            if ([_delegate respondsToSelector:@selector(synthesizer:didSpeakLine:)]) {
+                [_delegate synthesizer:self
+                          didSpeakLine:_lastSpokenText];
+            }
+            
             [self maybeDequeueLine];
         } else {
             // the system does not always call this observer with

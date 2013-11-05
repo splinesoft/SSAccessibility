@@ -79,4 +79,14 @@
  */
 - (void) synthesizer:(SSSpeechSynthesizer *)synthesizer willBeginSpeakingLine:(NSString *)line;
 
+/**
+ * The synthesizer has successfully finished speaking a line of text.
+ */
+- (void) synthesizer:(SSSpeechSynthesizer *)synthesizer didSpeakLine:(NSString *)line;
+
+/**
+ * The synthesizer believes it has reached the end of its speaking queue.
+ */
+- (void) synthesizerDidFinishQueue:(SSSpeechSynthesizer *)synthesizer;
+
 @end
