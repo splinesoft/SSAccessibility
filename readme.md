@@ -19,7 +19,7 @@ pod 'SSAccessibility', :git => 'https://github.com/splinesoft/SSAccessibility.gi
 
 SSSpeechSynthesizer manages a queue of lines of text, speaking one at a time with VoiceOver, then speaking the next line when speaking finishes.
 
-The user can interrupt speech by tapping any element on screen that is announced by VoiceOver. If interrupted, SSSpeechSynthesizer will start speaking again 10 seconds after it last started speaking (this needs work)
+The user can interrupt speech by tapping any element on screen that is announced by VoiceOver.
 
 ### Why not use iOS 7's `AVSpeechSynthesizer`?
 
@@ -27,9 +27,8 @@ You should if you can. `AVSpeechSynthesizer` is good for speaking long blobs of 
 
 * `AVSpeechSynthesizer` requires iOS 7
 * `AVSpeechSynthesizer` doesn't always pause or stop speaking when asked
-* `AVSpeechSynthesizer` supports a user-specified speaking rate for each line of text. VoiceOver's speaking rate is defined system-wide
+* The user can set her preferred VoiceOver speaking rate in Settings.app, but there is no programmatic API access to that default speech rate -- say, for use in your `AVSpeechSynthesizer`
 * `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when a user with VoiceOver taps an element
-* There is no API to programmatically access the system preferred VoiceOver speaking rate
 * The user can immediately (and intentionally or unintentionally) interrupt VoiceOver by tapping any element on screen
 
 ## SSAccessibility

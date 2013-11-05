@@ -11,22 +11,20 @@
  * with VoiceOver, then speaking the next line when speaking finishes.
  *
  * The user can interrupt speech by tapping any element on screen that is announced by VoiceOver.
- * If interrupted, SSSpeechSynthesizer will start speaking again 10 seconds after it last started speaking.
  *
  * Why not use iOS 7's AVSpeechSynthesizer?
  * You should if you can. AVSpeechSynthesizer is good for speaking long blobs of text.
  * But there are reasons to prefer VoiceOver:
- * * AVSpeechSynthesizer requires iOS 7
- * * AVSpeechSynthesizer doesn't always pause or stop speaking when asked
- * * AVSpeechSynthesizer supports a user-specified speaking rate for each line of text. VoiceOver's
- *   speaking rate is defined system-wide
+ * `AVSpeechSynthesizer` requires iOS 7
+ * `AVSpeechSynthesizer` doesn't always pause or stop speaking when asked
+ * The user can set her preferred VoiceOver speaking rate in Settings.app, but there is no programmatic API access to that default speech rate -- say, for use in your `AVSpeechSynthesizer`
  * `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when a user with VoiceOver taps an element
- * * There is no API to programmatically access the system preferred VoiceOver speaking rate
- * * The user can immediately (and intentionally or unintentionally) interrupt
- *   VoiceOver by tapping any element on screen
+ * The user can immediately (and intentionally or unintentionally) interrupt VoiceOver by tapping any element on screen
  */
 
 #import <Foundation/Foundation.h>
+
+@protocol SSSpeechSynthesizerDelegate;
 
 @interface SSSpeechSynthesizer : NSObject
 
@@ -48,6 +46,11 @@
 @property (nonatomic, assign) NSTimeInterval timeoutDelay;
 
 /**
+ * The delegate is notified about synthesizer events.
+ */
+@property (nonatomic, weak) id <SSSpeechSynthesizerDelegate> delegate;
+
+/**
  * Stops speaking at the end of the current announcement and clears the text queue.
  */
 - (void) stopSpeaking;
@@ -63,5 +66,16 @@
  * Will not interrupt speaking.
  */
 - (void) enqueueLineForSpeaking:(NSString *)line;
+
+@end
+
+@protocol SSSpeechSynthesizerDelegate <NSObject>
+
+@optional
+
+/**
+ * Sent to the delegate just before the synthesizer begins speaking.
+ */
+- (void) synthesizer:(SSSpeechSynthesizer *)synthesizer willBeginSpeakingLine:(NSString *)line;
 
 @end

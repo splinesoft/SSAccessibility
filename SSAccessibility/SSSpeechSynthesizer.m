@@ -45,6 +45,7 @@
 }
 
 - (void)dealloc {
+    _delegate = nil;
     [_speakResetTimer invalidate];
     [_speechQueue removeAllObjects];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -53,10 +54,11 @@
 #pragma mark - speech control
 
 - (void)voiceOverStatusChanged {
-    if( UIAccessibilityIsVoiceOverRunning() )
+    if( UIAccessibilityIsVoiceOverRunning() ) {
         [self continueSpeaking];
-    else
+    } else {
         [self stopSpeaking];
+    }
 }
 
 - (void)stopSpeaking {
@@ -72,8 +74,9 @@
 #pragma mark - Speaking
 
 - (void)enqueueLineForSpeaking:(NSString *)line {
-    if( [line length] == 0 )
-    return;
+    if( [line length] == 0 ) {
+        return;
+    }
     
     [_speechQueue addObject:line];
     
@@ -92,8 +95,9 @@
     if ( !_mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying] ) {
         _mayBeSpeaking = YES;
         
-        if (_speakResetTimer)
-        [_speakResetTimer invalidate];
+        if (_speakResetTimer) {
+            [_speakResetTimer invalidate];
+        }
         
         self.lastSpokenText = _speechQueue[0];
         
@@ -104,6 +108,11 @@
                                                                   userInfo:nil
                                                                    repeats:NO
                                                              dispatchQueue:dispatch_get_main_queue()];
+        }
+        
+        if ( [_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)] ) {
+            [_delegate synthesizer:self
+             willBeginSpeakingLine:_lastSpokenText];
         }
         
         [SSAccessibility speakWithVoiceOver:_lastSpokenText];
@@ -124,7 +133,9 @@
     NSDictionary *userInfo = [note userInfo];
     
     // We speak the next line only if VoiceOver successfully spoke our last line.
-    if ( [userInfo[UIAccessibilityAnnouncementKeyStringValue] isEqualToString:_lastSpokenText] ) {
+    if ( userInfo
+         && _lastSpokenText
+         && [userInfo[UIAccessibilityAnnouncementKeyStringValue] isEqualToString:_lastSpokenText] ) {
         
         if ( [userInfo[UIAccessibilityAnnouncementKeyWasSuccessful] boolValue] ) {
             [self maybeDequeueLine];
