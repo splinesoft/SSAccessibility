@@ -11,13 +11,13 @@
 @implementation SSAccessibility
 
 + (void) speakWithVoiceOver:(NSString *)string {
-    if ( [string length] == 0 )
+    if ([string length] == 0)
         return;
     
-    if ( !UIAccessibilityIsVoiceOverRunning() )
+    if (!UIAccessibilityIsVoiceOverRunning())
         return;
     
-    UIAccessibilityPostNotification( UIAccessibilityAnnouncementNotification, string );
+    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, string);
 }
 
 + (BOOL) otherAudioMayBePlaying {
@@ -26,10 +26,9 @@
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    AudioSessionGetProperty (kAudioSessionProperty_OtherAudioIsPlaying,
-                             &propertySize,
-                             &otherAudioIsPlaying
-                             );
+    AudioSessionGetProperty(kAudioSessionProperty_OtherAudioIsPlaying,
+                            &propertySize,
+                            &otherAudioIsPlaying);
 #pragma clang diagnostic pop
     
     if (otherAudioIsPlaying)

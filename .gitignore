@@ -10,6 +10,7 @@
 *.pbxuser
 *.perspectivev3
 .xcworkspacedata 
+xcshareddata
 
 #Ignore textmate build errors
 *.tm_build_errors
