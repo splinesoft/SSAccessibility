@@ -19,7 +19,8 @@
 - (void) voiceOverStatusChanged;
 - (void) voiceOverDidFinishAnnouncing:(NSNotification *)note;
 - (void) voiceOverMayHaveTimedOut;
-- (void) maybeDequeueLine;
+
+- (void) _maybeDequeueLine;
 
 @end
 
@@ -62,13 +63,17 @@
 }
 
 - (void)stopSpeaking {
-    [_speakResetTimer invalidate];
-    [_speechQueue removeAllObjects];
-    _mayBeSpeaking = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_speakResetTimer invalidate];
+        [_speechQueue removeAllObjects];
+        _mayBeSpeaking = NO;
+    });
 }
 
 - (void)continueSpeaking {
-    [self maybeDequeueLine];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self _maybeDequeueLine];
+    });
 }
 
 #pragma mark - Speaking
@@ -78,54 +83,54 @@
         return;
     }
     
-    [_speechQueue addObject:line];
-    
-    [self maybeDequeueLine];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_speechQueue addObject:line];
+        
+        [self _maybeDequeueLine];
+    });
 }
 
-- (void)maybeDequeueLine {
+- (void) _maybeDequeueLine {
     if (!UIAccessibilityIsVoiceOverRunning()) {
         return;
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if ([_speechQueue count] == 0) {
-            
-            if ([_delegate respondsToSelector:@selector(synthesizerDidFinishQueue:)]) {
-                [_delegate synthesizerDidFinishQueue:self];
-            }
-            
-            return;
+    if ([_speechQueue count] == 0) {
+        
+        if ([_delegate respondsToSelector:@selector(synthesizerDidFinishQueue:)]) {
+            [_delegate synthesizerDidFinishQueue:self];
         }
         
-        if (!_mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying]) {
-            _mayBeSpeaking = YES;
-            
-            if (_speakResetTimer) {
-                [_speakResetTimer invalidate];
-            }
-            
-            self.lastSpokenText = _speechQueue[0];
-            
-            if (_timeoutDelay > 0) {
-                _speakResetTimer = [MSWeakTimer scheduledTimerWithTimeInterval:_timeoutDelay
-                                                                        target:self
-                                                                      selector:@selector(voiceOverMayHaveTimedOut)
-                                                                      userInfo:nil
-                                                                       repeats:NO
-                                                                 dispatchQueue:dispatch_get_main_queue()];
-            }
-            
-            if ([_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
-                [_delegate synthesizer:self
-                 willBeginSpeakingLine:_lastSpokenText];
-            }
-            
-            [SSAccessibility speakWithVoiceOver:_lastSpokenText];
-            
-            [_speechQueue removeObjectAtIndex:0];
+        return;
+    }
+    
+    if (!_mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying]) {
+        _mayBeSpeaking = YES;
+        
+        if (_speakResetTimer) {
+            [_speakResetTimer invalidate];
         }
-    });
+        
+        self.lastSpokenText = _speechQueue[0];
+        
+        if (_timeoutDelay > 0) {
+            _speakResetTimer = [MSWeakTimer scheduledTimerWithTimeInterval:_timeoutDelay
+                                                                    target:self
+                                                                  selector:@selector(voiceOverMayHaveTimedOut)
+                                                                  userInfo:nil
+                                                                   repeats:NO
+                                                             dispatchQueue:dispatch_get_main_queue()];
+        }
+        
+        if ([_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
+            [_delegate synthesizer:self
+             willBeginSpeakingLine:_lastSpokenText];
+        }
+        
+        [SSAccessibility speakWithVoiceOver:_lastSpokenText];
+        
+        [_speechQueue removeObjectAtIndex:0];
+    }
 }
 
 #pragma mark - VoiceOver events
@@ -148,12 +153,14 @@
         
         if ([userInfo[UIAccessibilityAnnouncementKeyWasSuccessful] boolValue]) {
             
-            if ([_delegate respondsToSelector:@selector(synthesizer:didSpeakLine:)]) {
-                [_delegate synthesizer:self
-                          didSpeakLine:_lastSpokenText];
-            }
-            
-            [self maybeDequeueLine];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([_delegate respondsToSelector:@selector(synthesizer:didSpeakLine:)]) {
+                    [_delegate synthesizer:self
+                              didSpeakLine:_lastSpokenText];
+                }
+                
+                [self _maybeDequeueLine];
+            });
         } else {
             // the system does not always call this observer with
             // UIAccessibilityAnnouncementKeyWasSuccessful == NO :(
