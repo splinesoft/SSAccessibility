@@ -4,4 +4,4 @@ set -e
 
 cd Library
 pod install
-xctool -workspace SSAccessibility.xcworkspace -scheme SSAccessibility -sdk iphoneos build ONLY_ACTIVE_ARCH=NO VALID_ARCHS=armv7 ARCHS=armv7
+xctool -workspace SSAccessibility.xcworkspace -scheme SSAccessibility -sdk iphoneos build analyze ONLY_ACTIVE_ARCH=NO VALID_ARCHS=armv7 ARCHS=armv7
