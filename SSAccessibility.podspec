@@ -10,5 +10,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.source_files = 'SSAccessibility/*.{h,m}'
   s.frameworks   = ['Foundation', 'UIKit', 'AudioToolbox'] 
+  s.social_media_url = 'https://twitter.com/jhersh'
   s.dependency 'MSWeakTimer'
 end
