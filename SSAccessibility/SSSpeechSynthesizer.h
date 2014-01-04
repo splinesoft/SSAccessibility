@@ -28,7 +28,7 @@
 
 @interface SSSpeechSynthesizer : NSObject
 
-/*
+/**
  * Returns a best guess as to whether the synthesizer is currently speaking something with VoiceOver.
  * There is no guaranteed programmatic access to VoiceOver's speaking status.
  * THIS MAY BE INACCURATE.
@@ -75,7 +75,14 @@
 @optional
 
 /**
- * Sent to the delegate just before the synthesizer begins speaking.
+ * Optionally implement this method to specify a number of seconds 
+ * to wait before speaking a line of text.
+ */
+- (NSTimeInterval) synthesizer:(SSSpeechSynthesizer *)synthesizer secondsToWaitBeforeSpeaking:(NSString *)line;
+
+/**
+ * Sent to the delegate AFTER waiting the amount of time specified in 
+ * `secondsToWaitBeforeSpeaking` and just BEFORE the synthesizer begins speaking.
  */
 - (void) synthesizer:(SSSpeechSynthesizer *)synthesizer willBeginSpeakingLine:(NSString *)line;
 

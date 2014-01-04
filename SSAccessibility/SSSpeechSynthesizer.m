@@ -122,14 +122,30 @@
                                                              dispatchQueue:dispatch_get_main_queue()];
         }
         
-        if ([_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
-            [_delegate synthesizer:self
-             willBeginSpeakingLine:_lastSpokenText];
+        void (^speechAction)(void) = ^{
+            if ([_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
+                [_delegate synthesizer:self
+                 willBeginSpeakingLine:_lastSpokenText];
+            }
+            
+            [SSAccessibility speakWithVoiceOver:_lastSpokenText];
+        };
+        
+        NSTimeInterval delay = 0;
+        
+        if ([_delegate respondsToSelector:@selector(synthesizer:secondsToWaitBeforeSpeaking:)]) {
+            delay = [_delegate synthesizer:self
+               secondsToWaitBeforeSpeaking:_lastSpokenText];
         }
         
-        [SSAccessibility speakWithVoiceOver:_lastSpokenText];
-        
         [_speechQueue removeObjectAtIndex:0];
+        
+        if (delay > 0) {
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), speechAction);
+        } else {
+            speechAction();
+        }
     }
 }
 

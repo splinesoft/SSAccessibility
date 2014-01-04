@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5E5ABC2C1827464B00791CF3"
-               BuildableName = "libSSAccessibility.a"
+               BlueprintIdentifier = "5E5697BE1878B6F50038E392"
+               BuildableName = "SSAccessibility.app"
                BlueprintName = "SSAccessibility"
                ReferencedContainer = "container:SSAccessibility.xcodeproj">
             </BuildableReference>
@@ -32,13 +32,22 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5E5ABC3C1827464B00791CF3"
+               BlueprintIdentifier = "5E5697E21878B6F50038E392"
                BuildableName = "SSAccessibilityTests.xctest"
                BlueprintName = "SSAccessibilityTests"
                ReferencedContainer = "container:SSAccessibility.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5E5697BE1878B6F50038E392"
+            BuildableName = "SSAccessibility.app"
+            BlueprintName = "SSAccessibility"
+            ReferencedContainer = "container:SSAccessibility.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -49,6 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5E5697BE1878B6F50038E392"
+            BuildableName = "SSAccessibility.app"
+            BlueprintName = "SSAccessibility"
+            ReferencedContainer = "container:SSAccessibility.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -58,6 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5E5697BE1878B6F50038E392"
+            BuildableName = "SSAccessibility.app"
+            BlueprintName = "SSAccessibility"
+            ReferencedContainer = "container:SSAccessibility.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

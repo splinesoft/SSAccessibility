@@ -2,8 +2,8 @@
 //  SSAccessibilityTests.m
 //  SSAccessibilityTests
 //
-//  Created by Jonathan Hersh on 11/3/13.
-//  Copyright (c) 2013 Splinesoft. All rights reserved.
+//  Created by Jonathan Hersh on 1/4/14.
+//  Copyright (c) 2014 Splinesoft. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

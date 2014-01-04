@@ -2,6 +2,14 @@
 
 set -e
 
-cd Library
+cd Example
 pod install
-xctool -workspace SSAccessibility.xcworkspace -scheme SSAccessibility -sdk iphoneos build analyze ONLY_ACTIVE_ARCH=NO VALID_ARCHS=armv7 ARCHS=armv7
+
+xctool \
+-workspace SSAccessibility.xcworkspace \
+-scheme SSAccessibility \
+-sdk iphonesimulator \
+build \
+ONLY_ACTIVE_ARCH=NO \
+RUN_CLANG_STATIC_ANALYZER=YES \
+CLANG_STATIC_ANALYZER_MODE=deep
