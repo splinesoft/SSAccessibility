@@ -2,14 +2,11 @@
 
 set -e
 
-cd Example
-pod install
-
 xcodebuild \
--workspace SSAccessibility.xcworkspace \
+-workspace Example/SSAccessibility.xcworkspace \
 -scheme SSAccessibility \
 -sdk iphonesimulator \
-build \
+clean build \
 ONLY_ACTIVE_ARCH=NO \
 RUN_CLANG_STATIC_ANALYZER=YES \
-CLANG_STATIC_ANALYZER_MODE=deep | xcpretty
+CLANG_STATIC_ANALYZER_MODE=deep | xcpretty -c
