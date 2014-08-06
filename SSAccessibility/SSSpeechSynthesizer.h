@@ -78,7 +78,8 @@
  * Optionally implement this method to specify a number of seconds 
  * to wait before speaking a line of text.
  */
-- (NSTimeInterval) synthesizer:(SSSpeechSynthesizer *)synthesizer secondsToWaitBeforeSpeaking:(NSString *)line;
+- (NSTimeInterval) synthesizer:(SSSpeechSynthesizer *)synthesizer
+   secondsToWaitBeforeSpeaking:(NSString *)line;
 
 /**
  * Sent to the delegate AFTER waiting the amount of time specified in 
@@ -89,7 +90,8 @@
 /**
  * The synthesizer has successfully finished speaking a line of text.
  */
-- (void) synthesizer:(SSSpeechSynthesizer *)synthesizer didSpeakLine:(NSString *)line;
+- (void) synthesizer:(SSSpeechSynthesizer *)synthesizer
+        didSpeakLine:(NSString *)line;
 
 /**
  * The synthesizer believes it has reached the end of its speaking queue.

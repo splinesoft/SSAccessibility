@@ -8,11 +8,10 @@
 
 #import "SSAccessibility.h"
 #import "SSSpeechSynthesizer.h"
-#import <MSWeakTimer.h>
 
 @interface SSSpeechSynthesizer ()
 
-@property (nonatomic, strong) MSWeakTimer *speakResetTimer;
+@property (nonatomic, strong) NSTimer *speakResetTimer;
 @property (nonatomic, strong) NSMutableArray *speechQueue;
 @property (nonatomic, copy) NSString *lastSpokenText;
 
@@ -48,6 +47,7 @@
 - (void)dealloc {
     _delegate = nil;
     [_speakResetTimer invalidate];
+    _speakResetTimer = nil;
     [_speechQueue removeAllObjects];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -64,8 +64,8 @@
 
 - (void)stopSpeaking {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_speakResetTimer invalidate];
-        [_speechQueue removeAllObjects];
+        [self.speakResetTimer invalidate];
+        [self.speechQueue removeAllObjects];
         _mayBeSpeaking = NO;
     });
 }
@@ -84,7 +84,7 @@
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_speechQueue addObject:line];
+        [self.speechQueue addObject:line];
         
         [self _maybeDequeueLine];
     });
@@ -95,37 +95,36 @@
         return;
     }
     
-    if ([_speechQueue count] == 0) {
+    if ([self.speechQueue count] == 0) {
         
-        if ([_delegate respondsToSelector:@selector(synthesizerDidFinishQueue:)]) {
-            [_delegate synthesizerDidFinishQueue:self];
+        if ([self.delegate respondsToSelector:@selector(synthesizerDidFinishQueue:)]) {
+            [self.delegate synthesizerDidFinishQueue:self];
         }
         
         return;
     }
     
-    if (!_mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying]) {
+    if (!self.mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying]) {
         _mayBeSpeaking = YES;
         
-        if (_speakResetTimer) {
-            [_speakResetTimer invalidate];
+        if (self.speakResetTimer) {
+            [self.speakResetTimer invalidate];
         }
         
-        self.lastSpokenText = _speechQueue[0];
+        self.lastSpokenText = self.speechQueue[0];
         
-        if (_timeoutDelay > 0) {
-            _speakResetTimer = [MSWeakTimer scheduledTimerWithTimeInterval:_timeoutDelay
+        if (self.timeoutDelay > 0) {
+            self.speakResetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timeoutDelay
                                                                     target:self
                                                                   selector:@selector(voiceOverMayHaveTimedOut)
                                                                   userInfo:nil
-                                                                   repeats:NO
-                                                             dispatchQueue:dispatch_get_main_queue()];
+                                                                   repeats:NO];
         }
         
         void (^speechAction)(void) = ^{
-            if ([_delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
-                [_delegate synthesizer:self
-                 willBeginSpeakingLine:_lastSpokenText];
+            if ([self.delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
+                [self.delegate synthesizer:self
+                     willBeginSpeakingLine:_lastSpokenText];
             }
             
             [SSAccessibility speakWithVoiceOver:_lastSpokenText];
@@ -133,12 +132,12 @@
         
         NSTimeInterval delay = 0;
         
-        if ([_delegate respondsToSelector:@selector(synthesizer:secondsToWaitBeforeSpeaking:)]) {
-            delay = [_delegate synthesizer:self
-               secondsToWaitBeforeSpeaking:_lastSpokenText];
+        if ([self.delegate respondsToSelector:@selector(synthesizer:secondsToWaitBeforeSpeaking:)]) {
+            delay = [self.delegate synthesizer:self
+                   secondsToWaitBeforeSpeaking:_lastSpokenText];
         }
         
-        [_speechQueue removeObjectAtIndex:0];
+        [self.speechQueue removeObjectAtIndex:0];
         
         if (delay > 0) {
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
@@ -154,8 +153,8 @@
 - (void)voiceOverDidFinishAnnouncing:(NSNotification *)note {
     _mayBeSpeaking = NO;
     
-    if (_speakResetTimer) {
-        [_speakResetTimer invalidate];
+    if (self.speakResetTimer) {
+        [self.speakResetTimer invalidate];
     }
     
     NSDictionary *userInfo = [note userInfo];
@@ -164,15 +163,15 @@
     // like toggling the mute switch.
     // We speak the next line only if VoiceOver successfully spoke our last line.
     if (userInfo
-        && _lastSpokenText
-        && [userInfo[UIAccessibilityAnnouncementKeyStringValue] isEqualToString:_lastSpokenText]) {
+        && [self.lastSpokenText length] > 0
+        && [userInfo[UIAccessibilityAnnouncementKeyStringValue] isEqualToString:self.lastSpokenText]) {
         
         if ([userInfo[UIAccessibilityAnnouncementKeyWasSuccessful] boolValue]) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([_delegate respondsToSelector:@selector(synthesizer:didSpeakLine:)]) {
-                    [_delegate synthesizer:self
-                              didSpeakLine:_lastSpokenText];
+                if ([self.delegate respondsToSelector:@selector(synthesizer:didSpeakLine:)]) {
+                    [self.delegate synthesizer:self
+                                  didSpeakLine:_lastSpokenText];
                 }
                 
                 [self _maybeDequeueLine];
@@ -180,7 +179,7 @@
         } else {
             // the system does not always call this observer with
             // UIAccessibilityAnnouncementKeyWasSuccessful == NO :(
-            _lastSpokenText = nil;
+            self.lastSpokenText = nil;
         }
     }
 }
