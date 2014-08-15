@@ -1,0 +1,17 @@
+PODS:
+  - MXGSynchronizeTest (1.0.0)
+  - SSAccessibility (0.1.0)
+
+DEPENDENCIES:
+  - MXGSynchronizeTest
+  - SSAccessibility (from `../`)
+
+EXTERNAL SOURCES:
+  SSAccessibility:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MXGSynchronizeTest: 39c43d814b30ad40866d53587e930821560f0e5b
+  SSAccessibility: a9586b48f563466b406862564c70067f1f2357a8
+
+COCOAPODS: 0.33.1
