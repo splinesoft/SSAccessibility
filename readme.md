@@ -8,7 +8,7 @@ iOS Accessibility helpers.
 
 ## Install
 
-Install with [CocoaPods](http://cocoapods.org).
+Install with [CocoaPods](http://cocoapods.org). Add to your `Podfile`:
 
 ```
 pod 'SSAccessibility', :head # YOLO
