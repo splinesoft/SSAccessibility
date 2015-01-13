@@ -33,13 +33,4 @@
     XCTAssertNotNil([SSSpeechSynthesizer new], @"Should be initializable");
 }
 
-- (void)testOtherAudioPlaying
-{
-#if !TARGET_IPHONE_SIMULATOR
-    XCTAssertTrue([SSAccessibility otherAudioMayBePlaying], @"On iOS 7+, this is generally always true");
-#else
-    XCTAssertFalse([SSAccessibility otherAudioMayBePlaying], @"...except on simulator");
-#endif
-}
-
 @end

@@ -25,7 +25,7 @@
 
 @implementation SSSpeechSynthesizer
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         _speechQueue = [NSMutableArray new];
         _mayBeSpeaking = NO;
@@ -85,18 +85,16 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.speechQueue addObject:line];
-        
         [self _maybeDequeueLine];
     });
 }
 
-- (void) _maybeDequeueLine {
+- (void)_maybeDequeueLine {
     if (!UIAccessibilityIsVoiceOverRunning()) {
         return;
     }
     
     if ([self.speechQueue count] == 0) {
-        
         if ([self.delegate respondsToSelector:@selector(synthesizerDidFinishQueue:)]) {
             [self.delegate synthesizerDidFinishQueue:self];
         }
@@ -104,7 +102,7 @@
         return;
     }
     
-    if (!self.mayBeSpeaking || ![SSAccessibility otherAudioMayBePlaying]) {
+    if (!self.mayBeSpeaking) {
         _mayBeSpeaking = YES;
         
         if (self.speakResetTimer) {
@@ -134,7 +132,7 @@
         
         if ([self.delegate respondsToSelector:@selector(synthesizer:secondsToWaitBeforeSpeaking:)]) {
             delay = [self.delegate synthesizer:self
-                   secondsToWaitBeforeSpeaking:_lastSpokenText];
+                   secondsToWaitBeforeSpeaking:self.lastSpokenText];
         }
         
         [self.speechQueue removeObjectAtIndex:0];

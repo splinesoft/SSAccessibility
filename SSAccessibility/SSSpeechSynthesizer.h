@@ -22,7 +22,7 @@
  * The user can immediately (and intentionally or unintentionally) interrupt VoiceOver by tapping any element on screen
  */
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol SSSpeechSynthesizerDelegate;
 

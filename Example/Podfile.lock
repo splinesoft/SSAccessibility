@@ -1,6 +1,6 @@
 PODS:
   - MXGSynchronizeTest (1.1.0)
-  - SSAccessibility (0.1.0)
+  - SSAccessibility (0.2.0)
 
 DEPENDENCIES:
   - MXGSynchronizeTest
@@ -12,6 +12,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MXGSynchronizeTest: 8f2f041ca6896caec74463ab43743d97d3dc8c18
-  SSAccessibility: a9586b48f563466b406862564c70067f1f2357a8
+  SSAccessibility: a16ea1392bb861f323c30fd33911e02437969d9c
 
 COCOAPODS: 0.35.0
