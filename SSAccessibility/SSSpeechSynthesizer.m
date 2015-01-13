@@ -109,7 +109,8 @@
             [self.speakResetTimer invalidate];
         }
         
-        self.lastSpokenText = self.speechQueue[0];
+        self.lastSpokenText = [self.speechQueue firstObject];
+        [self.speechQueue removeObjectAtIndex:0];
         
         if (self.timeoutDelay > 0) {
             self.speakResetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timeoutDelay
@@ -122,10 +123,10 @@
         void (^speechAction)(void) = ^{
             if ([self.delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
                 [self.delegate synthesizer:self
-                     willBeginSpeakingLine:_lastSpokenText];
+                     willBeginSpeakingLine:self.lastSpokenText];
             }
             
-            [SSAccessibility speakWithVoiceOver:_lastSpokenText];
+            [SSAccessibility speakWithVoiceOver:self.lastSpokenText];
         };
         
         NSTimeInterval delay = 0;
@@ -134,8 +135,6 @@
             delay = [self.delegate synthesizer:self
                    secondsToWaitBeforeSpeaking:self.lastSpokenText];
         }
-        
-        [self.speechQueue removeObjectAtIndex:0];
         
         if (delay > 0) {
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
@@ -169,7 +168,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([self.delegate respondsToSelector:@selector(synthesizer:didSpeakLine:)]) {
                     [self.delegate synthesizer:self
-                                  didSpeakLine:_lastSpokenText];
+                                  didSpeakLine:self.lastSpokenText];
                 }
                 
                 [self _maybeDequeueLine];
