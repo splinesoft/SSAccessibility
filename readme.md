@@ -1,10 +1,10 @@
 # SSAccessibility
 
-[![Build Status](https://travis-ci.org/splinesoft/SSAccessibility.png?branch=master)](https://travis-ci.org/splinesoft/SSAccessibility)
+[![Build Status](https://travis-ci.org/splinesoft/SSAccessibility.svg?branch=master)](https://travis-ci.org/splinesoft/SSAccessibility)
 
-iOS Accessibility helpers.
+iOS Accessibility and VoiceOver helpers, including a VoiceOver speech synthesizer.
 
-`SSAccessibility` powers a VoiceOver speech synthesizer in my app [MUDRammer - A Modern MUD Client for iPhone and iPad](https://itunes.apple.com/us/app/mudrammer-a-modern-mud-client/id597157072?mt=8).
+`SSAccessibility` powers a speech synthesizer in my app [MUDRammer - A Modern MUD Client for iPhone and iPad](https://itunes.apple.com/us/app/mudrammer-a-modern-mud-client/id597157072?mt=8).
 
 ## Install
 
@@ -28,13 +28,13 @@ You should if you can. `AVSpeechSynthesizer` is good for speaking long blobs of 
 
 * `AVSpeechSynthesizer` requires iOS 7
 * `AVSpeechSynthesizer` doesn't always pause or stop speaking when asked
-* The user can set her preferred VoiceOver speaking rate in Settings.app, but there is no programmatic API access to that default speech rate -- say, for use in your `AVSpeechSynthesizer`
-* `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when VoiceOver starts, so two voices will be speaking at once
-* The user can immediately interrupt VoiceOver by tapping any element on screen
+* The user can set her preferred VoiceOver speaking rate in Settings.app, but there is no programmatic API access to that default speech rate for speaking with `AVSpeechSynthesizer`
+* `AVSpeechSynthesizer` doesn't stop speaking (only ducks volume) when VoiceOver starts, so two voices will be speaking at once
+* The user can immediately interrupt VoiceOver by tapping any accessible element on screen
 
 ## SSAccessibility
 
-Misc Accessibility helpers. See `SSAccessibility.h`.
+Accessibility helpers. See `SSAccessibility.h`.
 
 ```objc
 // Speak some text with VoiceOver. This is a shortcut for UIAccessibilityPostNotification.
