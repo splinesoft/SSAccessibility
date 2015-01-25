@@ -102,46 +102,49 @@
         return;
     }
     
-    if (!self.mayBeSpeaking) {
-        _mayBeSpeaking = YES;
-        
-        if (self.speakResetTimer) {
-            [self.speakResetTimer invalidate];
+    if (self.mayBeSpeaking) {
+        return;
+    }
+    
+    _mayBeSpeaking = YES;
+    
+    if (self.speakResetTimer) {
+        [self.speakResetTimer invalidate];
+        _speakResetTimer = nil;
+    }
+    
+    self.lastSpokenText = [self.speechQueue firstObject];
+    [self.speechQueue removeObjectAtIndex:0];
+    
+    if (self.timeoutDelay > 0) {
+        self.speakResetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timeoutDelay
+                                                                target:self
+                                                              selector:@selector(voiceOverMayHaveTimedOut)
+                                                              userInfo:nil
+                                                               repeats:NO];
+    }
+    
+    void (^speechAction)(void) = ^{
+        if ([self.delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
+            [self.delegate synthesizer:self
+                 willBeginSpeakingLine:self.lastSpokenText];
         }
         
-        self.lastSpokenText = [self.speechQueue firstObject];
-        [self.speechQueue removeObjectAtIndex:0];
-        
-        if (self.timeoutDelay > 0) {
-            self.speakResetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timeoutDelay
-                                                                    target:self
-                                                                  selector:@selector(voiceOverMayHaveTimedOut)
-                                                                  userInfo:nil
-                                                                   repeats:NO];
-        }
-        
-        void (^speechAction)(void) = ^{
-            if ([self.delegate respondsToSelector:@selector(synthesizer:willBeginSpeakingLine:)]) {
-                [self.delegate synthesizer:self
-                     willBeginSpeakingLine:self.lastSpokenText];
-            }
-            
-            [SSAccessibility speakWithVoiceOver:self.lastSpokenText];
-        };
-        
-        NSTimeInterval delay = 0;
-        
-        if ([self.delegate respondsToSelector:@selector(synthesizer:secondsToWaitBeforeSpeaking:)]) {
-            delay = [self.delegate synthesizer:self
-                   secondsToWaitBeforeSpeaking:self.lastSpokenText];
-        }
-        
-        if (delay > 0) {
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
-            dispatch_after(popTime, dispatch_get_main_queue(), speechAction);
-        } else {
-            speechAction();
-        }
+        [SSAccessibility speakWithVoiceOver:self.lastSpokenText];
+    };
+    
+    NSTimeInterval delay = 0;
+    
+    if ([self.delegate respondsToSelector:@selector(synthesizer:secondsToWaitBeforeSpeaking:)]) {
+        delay = [self.delegate synthesizer:self
+               secondsToWaitBeforeSpeaking:self.lastSpokenText];
+    }
+    
+    if (delay > 0) {
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), speechAction);
+    } else {
+        speechAction();
     }
 }
 
