@@ -1,11 +1,16 @@
-osx_image: xcode61
+osx_image: xcode611
 language: objective-c
 before_install: gem install cocoapods xcpretty obcd -N
 cache: cocoapods
 podfile: Example/Podfile
 env:
-  - LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
+- LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
 script:
-  - set -o pipefail && xcodebuild -workspace Example/SSAccessibility.xcworkspace -scheme SSAccessibility -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6" clean test | xcpretty -c
-  - pod lib lint --quick
-  - obcd --path SSAccessibility find HeaderStyle
+- set -o pipefail && xcodebuild -workspace Example/SSAccessibility.xcworkspace -scheme
+  SSAccessibility -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6" 
+  clean test | xcpretty -c
+- pod lib lint --quick
+- obcd --path SSAccessibility find HeaderStyle
+notifications:
+  slack:
+    secure: gLowzRNCBU4TRL5+xDyEFy9iEp9JutOEloUma6R+CbZWXVHjKShpdwso3VcWMk1Xn7LO6+2nGIl5suNT61/61Nrb9ovtNg14Ez83cbb27JybQbhQUSKw4yVRIf3S7y53dGfp+wzYIJzi4Mv3q6UuEjkYklzMT0s/KTUwU/HrL1g=
