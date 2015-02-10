@@ -84,6 +84,11 @@
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.speakResetTimer) {
+            [self.speakResetTimer invalidate];
+            _speakResetTimer = nil;
+        }
+        
         [self.speechQueue addObject:line];
         [self _maybeDequeueLine];
     });
@@ -155,6 +160,7 @@
     
     if (self.speakResetTimer) {
         [self.speakResetTimer invalidate];
+        _speakResetTimer = nil;
     }
     
     NSDictionary *userInfo = [note userInfo];
