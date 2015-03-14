@@ -1,0 +1,5 @@
+ci_service: circleci
+coverage_service: coveralls
+xcodeproj: Example/SSAccessibility.xcodeproj
+source_directory: SSAccessibility
+ci_access_token: dcnI8WNJsd3KOnDFueJRdZkxUt4NsjGid

@@ -1,6 +1,6 @@
 # SSAccessibility
 
-[![Build Status](https://travis-ci.org/splinesoft/SSAccessibility.svg?branch=master)](https://travis-ci.org/splinesoft/SSAccessibility)
+[![Circle CI](https://circleci.com/gh/splinesoft/SSAccessibility.svg?style=svg)](https://circleci.com/gh/splinesoft/SSAccessibility) [![Coverage Status](https://coveralls.io/repos/splinesoft/SSAccessibility/badge.svg)](https://coveralls.io/r/splinesoft/SSAccessibility)
 
 iOS Accessibility and VoiceOver helpers, including a VoiceOver speech synthesizer.
 
