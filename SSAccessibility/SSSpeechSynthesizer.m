@@ -167,7 +167,7 @@
     
     // This observer can also be fired by certain system audio events,
     // like toggling the mute switch.
-    // We speak the next line only if VoiceOver successfully spoke our last line.
+    // We speak the next line only if VoiceOver successfully spoke our previous line.
     if (userInfo
         && [self.lastSpokenText length] > 0
         && [userInfo[UIAccessibilityAnnouncementKeyStringValue] isEqualToString:self.lastSpokenText]) {

@@ -19,7 +19,7 @@
  * `AVSpeechSynthesizer` doesn't always pause or stop speaking when asked
  * The user can set her preferred VoiceOver speaking rate in Settings.app, but there is no programmatic API access to that default speech rate -- say, for use in your `AVSpeechSynthesizer`
  * `AVSpeechSynthesizer` doesn't stop speaking (only ducks) when VoiceOver starts, so two voices will be speaking at once
- * The user can immediately (and intentionally or unintentionally) interrupt VoiceOver by tapping any element on screen
+ * The user can immediately interrupt VoiceOver by tapping any element on screen
  */
 
 @import Foundation;
