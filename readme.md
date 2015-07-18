@@ -1,6 +1,6 @@
 # SSAccessibility
 
-[![Circle CI](https://circleci.com/gh/splinesoft/SSAccessibility.svg?style=svg)](https://circleci.com/gh/splinesoft/SSAccessibility) [![Coverage Status](https://coveralls.io/repos/splinesoft/SSAccessibility/badge.svg)](https://coveralls.io/r/splinesoft/SSAccessibility)
+[![Circle CI](https://circleci.com/gh/splinesoft/SSAccessibility.svg?style=svg)](https://circleci.com/gh/splinesoft/SSAccessibility) [![Coverage Status](http://codecov.io/github/splinesoft/SSAccessibility/coverage.svg?branch=master)](http://codecov.io/github/splinesoft/SSAccessibility?branch=master)
 
 iOS Accessibility and VoiceOver helpers, including a VoiceOver speech synthesizer.
 
